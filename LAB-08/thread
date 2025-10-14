@@ -1,11 +1,12 @@
-package thread;
+package threadjava;
 
 class SharedBuffer {
     private int item;
     private boolean available = false;
 
+    // Produce an item
     public synchronized void produce(int value) {
-        while (available) {
+        while (available) { // If the buffer is full, wait
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -15,11 +16,12 @@ class SharedBuffer {
         item = value;
         available = true;
         System.out.println("Produced: " + item);
-        notify();
+        notify(); // Notify the consumer that an item is available
     }
 
+    // Consume an item
     public synchronized void consume() {
-        while (!available) {
+        while (!available) { // If the buffer is empty, wait
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -28,7 +30,7 @@ class SharedBuffer {
         }
         System.out.println("Consumed: " + item);
         available = false;
-        notify();
+        notify(); // Notify the producer that the buffer is empty
     }
 }
 
@@ -39,11 +41,12 @@ class Producer extends Thread {
         this.buffer = buffer;
     }
 
+    @Override
     public void run() {
         for (int i = 1; i <= 5; i++) {
             buffer.produce(i);
             try {
-                Thread.sleep(500);
+                Thread.sleep(500); // Simulate time to produce an item
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
@@ -58,11 +61,12 @@ class Consumer extends Thread {
         this.buffer = buffer;
     }
 
+    @Override
     public void run() {
         for (int i = 1; i <= 5; i++) {
             buffer.consume();
             try {
-                Thread.sleep(800);
+                Thread.sleep(1000); // Simulate time to consume an item
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
@@ -70,13 +74,15 @@ class Consumer extends Thread {
     }
 }
 
-public class thread {
+public class threadjava {
     public static void main(String[] args) {
         SharedBuffer buffer = new SharedBuffer();
-        Producer p = new Producer(buffer);
-        Consumer c = new Consumer(buffer);
-        p.start();
-        c.start();
+
+        Producer producer = new Producer(buffer);
+        Consumer consumer = new Consumer(buffer);
+
+        producer.start();
+        consumer.start();
     }
 }
 
