@@ -1,0 +1,17 @@
+Enter the size of the square matrix (n): 3
+Enter the elements of the matrix:
+5
+7
+
+
+2
+5
+78
+36
+20
+49
+2
+
+Sum of Upper Diagonal elements: 130
+Sum of Lower Diagonal elements: 159
+Sum of Other (Secondary) Diagonal elements: 100
