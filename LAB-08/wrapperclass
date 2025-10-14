@@ -1,0 +1,29 @@
+public class WrapperDemo {
+    public static void main(String[] args) {
+        // Wrapper Class
+        Integer intObj = Integer.valueOf(100); // manually boxing
+        Double doubleObj = Double.valueOf(55.5);
+
+        // Autoboxing: primitive to object automatically
+        Integer autoBoxedInt = 200;
+        Character autoBoxedChar = 'A';
+
+        // Auto-unboxing: object to primitive automatically
+        int unboxedInt = autoBoxedInt;
+        char unboxedChar = autoBoxedChar;
+
+        // Display values
+        System.out.println("Manual Boxing: " + intObj);
+        System.out.println("Autoboxed Integer: " + autoBoxedInt);
+        System.out.println("Unboxed Integer: " + unboxedInt);
+        System.out.println("Autoboxed Character: " + autoBoxedChar);
+        System.out.println("Unboxed Character: " + unboxedChar);
+    }
+}
+
+
+Manual Boxing: 100
+Autoboxed Integer: 200
+Unboxed Integer: 200
+Autoboxed Character: A
+Unboxed Character: A
