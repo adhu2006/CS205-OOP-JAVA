@@ -1,0 +1,76 @@
+package SquareMatrix;
+
+import java.util.Scanner;
+
+public class SquareMatrix {
+
+    public static void main(String[] args) {
+
+        // Create a Scanner object to read input
+        Scanner sc = new Scanner(System.in);
+
+        // Asking for the size of the square matrix
+        System.out.print("Enter the size of the square matrix (n): ");
+        int n = sc.nextInt();
+
+        // Creating the matrix
+        int[][] mat = new int[n][n];
+
+        // Getting matrix elements from the user
+        System.out.println("Enter the elements of the matrix:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                mat[i][j] = sc.nextInt();
+            }
+        }
+
+        // Printing the entered matrix
+        System.out.println("\nMatrix Entered:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(mat[i][j] + "\t");
+            }
+            System.out.println();
+        }
+
+        // Checking if the matrix size is odd or even
+        if (n % 2 != 0) { // Odd-sized matrix
+            int mid = n / 2;
+            System.out.println("\nMiddle element (odd-sized matrix): " + mat[mid][mid]);
+        } else { // Even-sized matrix
+            int mid1 = n / 2 - 1;
+            int mid2 = n / 2;
+
+            System.out.println("\nMiddle elements (even-sized matrix):");
+            System.out.println(mat[mid1][mid1] + "  " + mat[mid1][mid2]);
+            System.out.println(mat[mid2][mid1] + "  " + mat[mid2][mid2]);
+
+            // Calculating the average of middle elements for even-sized matrix
+            double avg = (mat[mid1][mid1] + mat[mid1][mid2] + mat[mid2][mid1] + mat[mid2][mid2]) / 4.0;
+            System.out.println("Average of middle elements: " + avg);
+        }
+
+        // Closing the scanner
+        sc.close();
+    }
+}
+
+
+Enter the size of the square matrix (n): 3
+Enter the elements of the matrix:
+15
+20
+36
+56
+14
+45
+75
+58
+36
+
+Matrix Entered:
+15	20	36	
+56	14	45	
+75	58	36	
+
+Middle element (odd-sized matrix): 14
