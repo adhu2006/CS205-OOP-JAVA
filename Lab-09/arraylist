@@ -1,0 +1,205 @@
+package arraylist;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class arraylist {
+    public static void main(String[] args) {
+        ArrayList<String> studentList = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n--- Student List Menu ---");
+            System.out.println("1. Add Student");
+            System.out.println("2. Insert Student at Index");
+            System.out.println("3. Update Student Name");
+            System.out.println("4. Remove Student (by name or index)");
+            System.out.println("5. Display Student List");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter student name to add: ");
+                    String nameToAdd = scanner.nextLine();
+                    studentList.add(nameToAdd);
+                    System.out.println("Student added.");
+                    break;
+
+                case 2:
+                    System.out.print("Enter index to insert at: ");
+                    int indexToInsert = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+                    System.out.print("Enter student name to insert: ");
+                    String nameToInsert = scanner.nextLine();
+                    if (indexToInsert >= 0 && indexToInsert <= studentList.size()) {
+                        studentList.add(indexToInsert, nameToInsert);
+                        System.out.println("Student inserted.");
+                    } else {
+                        System.out.println("Invalid index.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter index of student to update: ");
+                    int indexToUpdate = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+                    if (indexToUpdate >= 0 && indexToUpdate < studentList.size()) {
+                        System.out.print("Enter new name: ");
+                        String newName = scanner.nextLine();
+                        studentList.set(indexToUpdate, newName);
+                        System.out.println("Student name updated.");
+                    } else {
+                        System.out.println("Invalid index.");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Remove by:");
+                    System.out.println("1. Name");
+                    System.out.println("2. Index");
+                    int removeChoice = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+                    if (removeChoice == 1) {
+                        System.out.print("Enter name to remove: ");
+                        String nameToRemove = scanner.nextLine();
+                        if (studentList.remove(nameToRemove)) {
+                            System.out.println("Student removed.");
+                        } else {
+                            System.out.println("Student not found.");
+                        }
+                    } else if (removeChoice == 2) {
+                        System.out.print("Enter index to remove: ");
+                        int indexToRemove = scanner.nextInt();
+                        scanner.nextLine(); // Consume newline
+                        if (indexToRemove >= 0 && indexToRemove < studentList.size()) {
+                            studentList.remove(indexToRemove);
+                            System.out.println("Student removed.");
+                        } else {
+                            System.out.println("Invalid index.");
+                        }
+                    } else {
+                        System.out.println("Invalid choice.");
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("\nCurrent Student List:");
+                    for (int i = 0; i < studentList.size(); i++) {
+                        System.out.println(i + ": " + studentList.get(i));
+                    }
+                    break;
+
+                case 0:
+                    System.out.println("Exiting program.");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 0);
+
+        scanner.close();
+    }
+}
+
+
+
+
+
+
+
+
+
+output-
+
+--- Student List Menu ---
+1. Add Student
+2. Insert Student at Index
+3. Update Student Name
+4. Remove Student (by name or index)
+5. Display Student List
+0. Exit
+Enter your choice: 1
+Enter student name to add: alice
+Student added.
+
+--- Student List Menu ---
+1. Add Student
+2. Insert Student at Index
+3. Update Student Name
+4. Remove Student (by name or index)
+5. Display Student List
+0. Exit
+Enter your choice: 2
+Enter index to insert at: 0
+Enter student name to insert: bob
+Student inserted.
+
+--- Student List Menu ---
+1. Add Student
+2. Insert Student at Index
+3. Update Student Name
+4. Remove Student (by name or index)
+5. Display Student List
+0. Exit
+Enter your choice: 3
+Enter index of student to update: 1
+Enter new name: charlie
+Student name updated.
+
+--- Student List Menu ---
+1. Add Student
+2. Insert Student at Index
+3. Update Student Name
+4. Remove Student (by name or index)
+5. Display Student List
+0. Exit
+Enter your choice: 4
+Remove by:
+1. Name
+2. Index
+1
+Enter name to remove: 1
+Student not found.
+
+--- Student List Menu ---
+1. Add Student
+2. Insert Student at Index
+3. Update Student Name
+4. Remove Student (by name or index)
+5. Display Student List
+0. Exit
+Enter your choice: 4
+Remove by:
+1. Name
+2. Index
+2
+Enter index to remove: 2
+Invalid index.
+
+--- Student List Menu ---
+1. Add Student
+2. Insert Student at Index
+3. Update Student Name
+4. Remove Student (by name or index)
+5. Display Student List
+0. Exit
+Enter your choice: 5
+
+Current Student List:
+0: bob
+1: charlie
+
+--- Student List Menu ---
+1. Add Student
+2. Insert Student at Index
+3. Update Student Name
+4. Remove Student (by name or index)
+5. Display Student List
+0. Exit
+Enter your choice: 
