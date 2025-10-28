@@ -1,0 +1,192 @@
+package MusicPlaylist;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class MusicPlaylist {
+    public static void main(String[] args) {
+        LinkedList<String> playlist = new LinkedList<>();
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n--- Music Playlist Menu ---");
+            System.out.println("1. Add song at beginning");
+            System.out.println("2. Add song at end");
+            System.out.println("3. Remove first song");
+            System.out.println("4. Remove last song");
+            System.out.println("5. Replace song at index");
+            System.out.println("6. Display playlist");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter song name to add at beginning: ");
+                    String songAtStart = scanner.nextLine();
+                    playlist.addFirst(songAtStart);
+                    System.out.println("Added \"" + songAtStart + "\" at the beginning.");
+                    break;
+                case 2:
+                    System.out.print("Enter song name to add at end: ");
+                    String songAtEnd = scanner.nextLine();
+                    playlist.addLast(songAtEnd);
+                    System.out.println("Added \"" + songAtEnd + "\" at the end.");
+                    break;
+                case 3:
+                    if (!playlist.isEmpty()) {
+                        String removedFirst = playlist.removeFirst();
+                        System.out.println("Removed \"" + removedFirst + "\" from the beginning.");
+                    } else {
+                        System.out.println("Playlist is empty.");
+                    }
+                    break;
+                case 4:
+                    if (!playlist.isEmpty()) {
+                        String removedLast = playlist.removeLast();
+                        System.out.println("Removed \"" + removedLast + "\" from the end.");
+                    } else {
+                        System.out.println("Playlist is empty.");
+                    }
+                    break;
+                case 5:
+                    System.out.print("Enter index to replace: ");
+                    int index = scanner.nextInt();
+                    scanner.nextLine(); // consume newline
+                    if (index >= 0 && index < playlist.size()) {
+                        System.out.print("Enter new song name: ");
+                        String newSong = scanner.nextLine();
+                        playlist.set(index, newSong);
+                        System.out.println("Replaced song at index " + index + " with \"" + newSong + "\".");
+                    } else {
+                        System.out.println("Invalid index.");
+                    }
+                    break;
+                case 6:
+                    System.out.println("\n--- Current Playlist ---");
+                    if (playlist.isEmpty()) {
+                        System.out.println("Playlist is empty.");
+                    } else {
+                        for (int i = 0; i < playlist.size(); i++) {
+                            System.out.println((i + 1) + ". " + playlist.get(i));
+                        }
+                    }
+                    break;
+                case 0:
+                    System.out.println("Exiting playlist manager.");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+        } while (choice != 0);
+
+        scanner.close();
+    }
+}
+
+
+
+output:-
+
+
+--- Music Playlist Menu ---
+1. Add song at beginning
+2. Add song at end
+3. Remove first song
+4. Remove last song
+5. Replace song at index
+6. Display playlist
+0. Exit
+Enter your choice: 1
+Enter song name to add at beginning: shape of you
+Added "shape of you" at the beginning.
+
+--- Music Playlist Menu ---
+1. Add song at beginning
+2. Add song at end
+3. Remove first song
+4. Remove last song
+5. Replace song at index
+6. Display playlist
+0. Exit
+Enter your choice: 2
+Enter song name to add at end: Blinding Lights
+Added "Blinding Lights" at the end.
+
+--- Music Playlist Menu ---
+1. Add song at beginning
+2. Add song at end
+3. Remove first song
+4. Remove last song
+5. Replace song at index
+6. Display playlist
+0. Exit
+Enter your choice: 6
+
+--- Current Playlist ---
+1. shape of you
+2. Blinding Lights
+
+--- Music Playlist Menu ---
+1. Add song at beginning
+2. Add song at end
+3. Remove first song
+4. Remove last song
+5. Replace song at index
+6. Display playlist
+0. Exit
+Enter your choice: 5
+Enter index to replace: 1
+Enter new song name: Levitating
+Replaced song at index 1 with "Levitating".
+
+--- Music Playlist Menu ---
+1. Add song at beginning
+2. Add song at end
+3. Remove first song
+4. Remove last song
+5. Replace song at index
+6. Display playlist
+0. Exit
+Enter your choice: 6
+
+--- Current Playlist ---
+1. shape of you
+2. Levitating
+
+--- Music Playlist Menu ---
+1. Add song at beginning
+2. Add song at end
+3. Remove first song
+4. Remove last song
+5. Replace song at index
+6. Display playlist
+0. Exit
+Enter your choice: 3
+Removed "shape of you" from the beginning.
+
+--- Music Playlist Menu ---
+1. Add song at beginning
+2. Add song at end
+3. Remove first song
+4. Remove last song
+5. Replace song at index
+6. Display playlist
+0. Exit
+Enter your choice: 6
+
+--- Current Playlist ---
+1. Levitating
+
+--- Music Playlist Menu ---
+1. Add song at beginning
+2. Add song at end
+3. Remove first song
+4. Remove last song
+5. Replace song at index
+6. Display playlist
+0. Exit
+Enter your choice: 0
+Exiting playlist manager.
